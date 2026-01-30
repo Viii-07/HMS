@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
+import { ShieldCheck, Lock, AlertCircle, LogOut } from 'lucide-react';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -29,123 +30,88 @@ const Login = () => {
     };
 
     return (
-        <div style={{
-            minHeight: '100vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#f0f4f8',
-            fontFamily: "'Inter', sans-serif"
-        }}>
-            <div style={{
-                backgroundColor: 'white',
-                padding: '2.5rem',
-                borderRadius: '12px',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-                width: '100%',
-                maxWidth: '400px'
-            }}>
-                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                    <h1 style={{ color: '#1e3a8a', margin: '0 0 0.5rem 0', fontSize: '1.75rem' }}>ProHealth HMS</h1>
-                    <p style={{ color: '#64748b', margin: 0 }}>Secure Portal Access</p>
+        <div className="login-wrapper">
+            <div className="login-card">
+                {/* Header Section */}
+                <div className="login-header">
+                    <h1 className="login-brand">ProHealth HMS</h1>
                 </div>
 
+                {/* Error Message */}
                 {error && (
-                    <div style={{
-                        backgroundColor: '#fee2e2',
-                        border: '1px solid #fecaca',
-                        color: '#991b1b',
-                        padding: '0.75rem',
-                        borderRadius: '6px',
-                        marginBottom: '1.5rem',
-                        fontSize: '0.875rem'
-                    }}>
-                        {error}
+                    <div className="error-message">
+                        <AlertCircle size={18} />
+                        <span>{error}</span>
                     </div>
                 )}
 
-                <form onSubmit={handleLogin}>
-                    <div style={{ marginBottom: '1.25rem' }}>
-                        <label style={{ display: 'block', marginBottom: '0.5rem', color: '#334155', fontWeight: '500' }}>Select Role</label>
+                {/* Login Form */}
+                <form onSubmit={handleLogin} className="login-form">
+                    <div className="form-group">
+                        <label className="form-label">Select Role</label>
                         <select
                             value={role}
                             onChange={(e) => setRole(e.target.value)}
-                            style={{
-                                width: '100%',
-                                padding: '0.75rem',
-                                borderRadius: '6px',
-                                border: '1px solid #cbd5e1',
-                                backgroundColor: 'white',
-                                color: '#334155'
-                            }}
+                            className="form-select"
                         >
                             <option value="doctor">Doctor</option>
                             <option value="receptionist">Receptionist</option>
                             <option value="pharmacy">Pharmacy</option>
                             <option value="staff">Staff</option>
-                            <option value="admin">Admin</option>
+                            <option value="admin">Administrator</option>
                         </select>
                     </div>
 
-                    <div style={{ marginBottom: '1.25rem' }}>
-                        <label style={{ display: 'block', marginBottom: '0.5rem', color: '#334155', fontWeight: '500' }}>User ID</label>
-                        <input
-                            type="text"
-                            value={id}
-                            onChange={(e) => setId(e.target.value)}
-                            placeholder="e.g. DOC001"
-                            style={{
-                                width: '100%',
-                                padding: '0.75rem',
-                                borderRadius: '6px',
-                                border: '1px solid #cbd5e1',
-                                outline: 'none',
-                                boxSizing: 'border-box'
-                            }}
-                        />
+                    <div className="form-group">
+                        <label className="form-label">User ID</label>
+                        <div style={{ position: 'relative' }}>
+                            <input
+                                type="text"
+                                value={id}
+                                onChange={(e) => setId(e.target.value)}
+                                placeholder="e.g. DOC001"
+                                className="form-input"
+                                autoFocus
+                            />
+                        </div>
                     </div>
 
-                    <div style={{ marginBottom: '1.5rem' }}>
-                        <label style={{ display: 'block', marginBottom: '0.5rem', color: '#334155', fontWeight: '500' }}>Password</label>
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="••••••••"
-                            style={{
-                                width: '100%',
-                                padding: '0.75rem',
-                                borderRadius: '6px',
-                                border: '1px solid #cbd5e1',
-                                outline: 'none',
-                                boxSizing: 'border-box'
-                            }}
-                        />
+                    <div className="form-group">
+                        <label className="form-label">Password</label>
+                        <div style={{ position: 'relative' }}>
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="••••••••"
+                                className="form-input"
+                            />
+                        </div>
                     </div>
 
                     <button
                         type="submit"
                         disabled={loading}
-                        style={{
-                            width: '100%',
-                            padding: '0.875rem',
-                            backgroundColor: '#2563eb',
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '6px',
-                            fontWeight: '600',
-                            fontSize: '1rem',
-                            cursor: loading ? 'not-allowed' : 'pointer',
-                            opacity: loading ? 0.7 : 1,
-                            transition: 'background-color 0.2s'
-                        }}
+                        className="login-btn"
                     >
                         {loading ? 'Authenticating...' : 'Login to Dashboard'}
                     </button>
                 </form>
 
-                <div style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '0.875rem', color: '#94a3b8' }}>
-                    <p>Protected System • Authorized Personnel Only</p>
+                {/* Footer Section */}
+                <div className="login-footer">
+                    <div className="security-notice">
+                        <Lock size={12} />
+                        Authorized Personnel Only • 256-bit Encryption
+                    </div>
+
+                    <button
+                        onClick={() => navigate('/')}
+                        className="btn-ghost"
+                    >
+                        <LogOut size={14} />
+                        Exit to Home
+                    </button>
                 </div>
             </div>
         </div>
