@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
+import loginVideo from "../../assets/login.mp4";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -34,9 +35,22 @@ const Login = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: '#f0f4f8',
-            fontFamily: "'Inter', sans-serif"
-        }}>
+            backgroundColor: 'white',
+            fontFamily: "'Inter', sans-serif",
+            marginLeft: "890px"
+        }}><video autoPlay loop muted playsInline
+  style={{
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    zIndex: -1
+  }}
+>
+  <source src={loginVideo} type="video/mp4" />
+</video>
             <div style={{
                 backgroundColor: 'white',
                 padding: '2.5rem',
