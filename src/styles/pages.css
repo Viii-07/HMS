@@ -1,12 +1,411 @@
-/* Page specific overrides if needed */
-.login-page {
+/* =========================================
+   Auth & Login Styles (Simplified & Premium)
+   ========================================= */
+
+.login-wrapper {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--bg-secondary);
+    /* Almost invisible background */
+    background-color: #f8fafc;
+    padding: var(--spacing-md);
 }
 
-.portal-welcome {
-    margin-bottom: var(--spacing-xl);
+.login-card {
+    background: white;
+    width: 100%;
+    max-width: 400px;
+    /* Slightly narrower for focus */
+    padding: 3rem 2.5rem;
+    border-radius: 16px;
+    /* Single soft shadow, barely there */
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.02),
+        0 2px 4px -1px rgba(0, 0, 0, 0.02);
+    /* Subtle border for definition without weight */
+    border: 1px solid #f1f5f9;
+}
+
+/* Header simplified */
+.login-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.login-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+    /* Regular weight for calm feel */
+    color: var(--color-text-main);
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+/* Form Layout */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.form-label {
+    font-size: 0.825rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+}
+
+.form-input,
+.form-select {
+    width: 100%;
+    padding: 0.75rem 0.875rem;
+    /* Compact comfortable padding */
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    background-color: white;
+    font-size: 0.9375rem;
+    color: var(--color-text-main);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus,
+.form-select:focus {
+    outline: none;
+    border-color: var(--color-brand-primary);
+    /* Very subtle focus ring */
+    box-shadow: 0 0 0 2px var(--color-brand-subtle);
+}
+
+.form-select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3csvg%3e");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+    padding-right: 2rem;
+    appearance: none;
+}
+
+/* Button - Flat and Clean */
+.login-btn {
+    width: 100%;
+    padding: 0.875rem;
+    background-color: var(--color-brand-primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 0.5rem;
+}
+
+.login-btn:hover:not(:disabled) {
+    background-color: var(--color-brand-hover);
+}
+
+.login-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: var(--color-text-light);
+}
+
+/* Footer - Minimalist */
+.login-footer {
+    margin-top: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.security-notice {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    /* Lighter text for almost invisible feel */
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.btn-ghost {
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 0.8125rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    opacity: 0.8;
+}
+
+.btn-ghost:hover {
+    color: var(--color-text-main);
+    opacity: 1;
+}
+
+.error-message {
+    background-color: #fef2f2;
+    border: 1px solid #fee2e2;
+    color: #b91c1c;
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8125rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* =========================================
+   Premium Landing Page Styles (About.jsx)
+   ========================================= */
+
+.about-wrapper {
+    background-color: var(--color-surface-bg);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- Hero Section --- */
+.landing-hero {
+    position: relative;
+    background: linear-gradient(180deg, #ffffff 0%, var(--bg-page) 100%);
+    padding: 6rem var(--spacing-md) 8rem;
+    /* Extra padding at bottom for overlap */
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Subtle background accent */
+.landing-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(2, 132, 199, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-badge {
+    display: inline-block;
+    background-color: var(--color-brand-subtle);
+    color: var(--color-brand-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-lg);
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--color-text-main);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--spacing-lg);
+}
+
+.hero-title .highlight {
+    background: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-active));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* --- Floating Stats Strip --- */
+.stats-strip-container {
+    margin-top: -4rem;
+    /* Negative margin to overlap hero */
+    position: relative;
+    z-index: 10;
+    margin-bottom: var(--spacing-2xl);
+    padding: 0 var(--spacing-md);
+}
+
+.stats-strip {
+    background: white;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    padding: var(--spacing-xl);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    animation: fadeInUp 1s ease-out 0.2s backwards;
+}
+
+.stat-block {
+    text-align: center;
+    position: relative;
+}
+
+/* Separator lines between stats */
+.stat-block:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -1rem;
+    /* Adjust based on gap */
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background-color: var(--color-border);
+    opacity: 0.5;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--color-text-main), var(--color-text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* --- Features Grid (Premium Cards) --- */
+.section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--spacing-2xl);
+}
+
+.section-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: -0.02em;
+}
+
+.modern-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-bottom: 4rem;
+}
+
+.premium-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--color-border);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.premium-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-brand-subtle);
+}
+
+.card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    margin-bottom: 1rem;
+}
+
+.card-desc {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* --- Animations --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .stat-block:not(:last-child)::after {
+        display: none;
+    }
+
+    .modern-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .modern-grid,
+    .stats-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-strip-container {
+        margin-top: -2rem;
+    }
 }
