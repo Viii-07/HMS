@@ -2,29 +2,164 @@
    Auth & Login Styles (Simplified & Premium)
    ========================================= */
 
+/* =========================================
+   Auth & Login Styles (Premium Healthcare UI)
+   ========================================= */
+
 .login-wrapper {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Almost invisible background */
-    background-color: #f8fafc;
     padding: var(--spacing-md);
+    position: relative;
+    overflow: hidden;
+    /* Base Professional Background */
+    background-color: #f8fafc;
+    /* Slate-50 */
+    background-image: linear-gradient(to bottom right, #f8fafc 0%, #f1f5f9 100%);
+    /* Fade In for the whole page */
+    animation: fadeInPage 0.8s ease-out forwards;
+}
+
+/* Floating Blob 1 - Teal/Cyan (Top Left) */
+.login-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 70vw;
+    height: 70vw;
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+    /* Teal-400 */
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    animation: floatBlobOne 25s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+/* Floating Blob 2 - Blue/Indigo (Bottom Right) */
+.login-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    right: -10%;
+    width: 65vw;
+    height: 65vw;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+    /* Sky-500 */
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    animation: floatBlobTwo 20s ease-in-out infinite alternate;
+    pointer-events: none;
 }
 
 .login-card {
-    background: white;
+    position: relative;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.85);
+    /* Slightly more transparency for glass feel */
     width: 100%;
     max-width: 400px;
-    /* Slightly narrower for focus */
     padding: 3rem 2.5rem;
-    border-radius: 16px;
-    /* Single soft shadow, barely there */
+    border-radius: 24px;
+    /* More rounded premium feel */
+
+    /* Base Shadow */
     box-shadow:
-        0 4px 6px -1px rgba(0, 0, 0, 0.02),
-        0 2px 4px -1px rgba(0, 0, 0, 0.02);
-    /* Subtle border for definition without weight */
-    border: 1px solid #f1f5f9;
+        0 20px 25px -5px rgba(0, 0, 0, 0.05),
+        0 8px 10px -6px rgba(0, 0, 0, 0.01);
+
+    /* Glassmorphism */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    /* Subtle smooth border */
+
+    /* Card Animations */
+    animation:
+        cardFloat 6s ease-in-out infinite,
+        gentlePulseShadow 8s ease-in-out infinite;
+}
+
+/* --- Animations --- */
+
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes floatBlobOne {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(10%, 10%) scale(1.1);
+    }
+}
+
+@keyframes floatBlobTwo {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(-10%, -10%) scale(1.05);
+    }
+}
+
+@keyframes cardFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+
+    /* Very subtle float */
+}
+
+@keyframes gentlePulseShadow {
+
+    0%,
+    100% {
+        box-shadow:
+            0 20px 25px -5px rgba(0, 0, 0, 0.05),
+            0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    50% {
+        box-shadow:
+            0 25px 50px -12px rgba(14, 165, 233, 0.15),
+            /* Subtle blue glow */
+            0 10px 15px -3px rgba(14, 165, 233, 0.05);
+        border-color: rgba(14, 165, 233, 0.2);
+        /* Subtle brand border tint */
+    }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+
+    .login-wrapper,
+    .login-wrapper::before,
+    .login-wrapper::after,
+    .login-card {
+        animation: none !important;
+        transition: none !important;
+    }
 }
 
 /* Header simplified */
@@ -234,6 +369,7 @@
 
 .hero-title .highlight {
     background: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-active));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -292,6 +428,7 @@
     line-height: 1;
     margin-bottom: 0.5rem;
     background: linear-gradient(135deg, var(--color-text-main), var(--color-text-muted));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -405,7 +542,111 @@
         grid-template-columns: 1fr;
     }
 
+
     .stats-strip-container {
         margin-top: -2rem;
+    }
+}
+
+/* =========================================
+   Patient Booking Page Styles
+   ========================================= */
+
+.booking-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.booking-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.booking-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.booking-content {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Default desktop alignment */
+    padding: 2rem;
+}
+
+.booking-card {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(10px);
+    max-width: 450px;
+    width: 100%;
+    margin-right: 8vw;
+    transition: all 0.3s ease;
+}
+
+/* Success State Override */
+.booking-card.success {
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.booking-card h2 {
+    color: var(--color-brand-primary);
+    /* Was #1e3a8a - using variable now */
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.booking-card p {
+    color: var(--color-text-muted);
+    margin-top: 0.5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .booking-card {
+        margin-right: 4vw;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .booking-content {
+        justify-content: center;
+        /* Center on mobile/tablet */
+        align-items: center;
+        /* Center vertically if possible, or start with padding */
+        padding: 1.5rem;
+    }
+
+    .booking-card {
+        margin-right: 0;
+        /* Remove right margin */
+        max-width: 100%;
+        padding: 1.5rem;
+    }
+
+    .booking-card h2 {
+        font-size: 1.5rem;
     }
 }

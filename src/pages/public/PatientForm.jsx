@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 import Button from '../../components/ui/Button';
 import hospitalVideo from '../../utils/hospital.mp4';
 
@@ -43,7 +44,7 @@ const PatientForm = () => {
     };
 
     return (
-        <div style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden' }}>
+        <div className="booking-wrapper">
             {/* Background Video */}
             <video
                 src={hospitalVideo}
@@ -51,109 +52,87 @@ const PatientForm = () => {
                 loop
                 muted
                 playsInline
-                style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    zIndex: 0
-                }}
+                className="booking-video-bg"
             />
 
-            {/* Overlay to dim video slightly for readability if needed */}
-            <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                backgroundColor: 'rgba(0,0,0,0.2)', // Slight dark overlay
-                zIndex: 1
-            }}></div>
+            {/* Overlay */}
+            <div className="booking-overlay"></div>
 
-            {/* Content Container - Positioning the form */}
-            <div style={{
-                position: 'relative',
-                zIndex: 10,
-                minHeight: '100vh',
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'flex-end', // Align to far right
-                padding: '2rem'
-            }}>
+            {/* Content Container */}
+            <div className="booking-content">
                 {/* Form Card */}
                 {submitted ? (
-                    <div style={{
-                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                        padding: '3rem',
-                        borderRadius: '16px',
-                        border: '1px solid rgba(255,255,255,0.4)',
-                        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-                        maxWidth: '450px',
-                        width: '100%',
-                        textAlign: 'center',
-                        marginRight: '8vw' // Responsive margin from right
-                    }}>
-                        <h2 style={{ color: '#059669', marginBottom: '1rem', fontSize: '2rem' }}>Success!</h2>
+                    <div className="booking-card success">
+                        <h2 style={{ color: '#059669' }}>Success!</h2>
                         <p style={{ color: '#065f46', fontSize: '1.1rem' }}>Your registration is confirmed.</p>
                         <p style={{ marginTop: '1rem', fontWeight: 600, color: '#047857' }}>Redirecting...</p>
                     </div>
                 ) : (
-                    <div style={{
-                        backgroundColor: 'rgba(255, 255, 255, 0.95)', // Increased opacity for better contrast
-                        padding: '2rem',
-                        borderRadius: '20px',
-                        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-                        backdropFilter: 'blur(10px)',
-                        maxWidth: '420px', // Slightly narrower to fit well
-                        width: '100%',
-                        marginRight: '8vw' // Push 8% from the right edge
-                    }}>
+                    <div className="booking-card">
+                        <button
+                            onClick={() => navigate('/patient')}
+                            style={{
+                                background: 'none',
+                                border: 'none',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.5rem',
+                                color: '#64748b',
+                                marginBottom: '1.5rem',
+                                fontSize: '0.9rem',
+                                padding: 0,
+                                fontWeight: 500
+                            }}
+                            onMouseOver={(e) => e.currentTarget.style.color = '#0284c7'}
+                            onMouseOut={(e) => e.currentTarget.style.color = '#64748b'}
+                        >
+                            <ArrowLeft size={16} />
+                            Back to Portal
+                        </button>
+
                         <div style={{ marginBottom: '2rem' }}>
-                            <h2 style={{ color: '#1e3a8a', margin: 0, fontSize: '1.8rem' }}>Book Consultation</h2>
-                            <p style={{ color: '#64748b', marginTop: '0.5rem' }}>Fill in your details to secure an appointment.</p>
+                            <h2 className="text-xl font-bold text-brand-primary">Book Consultation</h2>
+                            <p className="text-muted mt-2">Fill in your details to secure an appointment.</p>
                         </div>
 
                         <form onSubmit={handleSubmit}>
-                            <div className="grid grid-cols-2" style={{ gap: '1rem', marginBottom: '1rem' }}>
-                                <div>
-                                    <label style={{ display: 'block', marginBottom: '0.4rem', fontWeight: 600, fontSize: '0.9rem', color: '#334155' }}>Full Name</label>
+                            <div className="grid grid-cols-2">
+                                <div className="form-group">
+                                    <label className="form-label">Full Name</label>
                                     <input
                                         required
                                         type="text"
                                         name="name"
                                         value={formData.name}
                                         onChange={handleChange}
-                                        style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', border: '1px solid #cbd5e1', backgroundColor: 'rgba(255,255,255,0.8)' }}
+                                        className="form-input"
                                         placeholder="John Doe"
                                     />
                                 </div>
-                                <div>
-                                    <label style={{ display: 'block', marginBottom: '0.4rem', fontWeight: 600, fontSize: '0.9rem', color: '#334155' }}>Age</label>
+                                <div className="form-group">
+                                    <label className="form-label">Age</label>
                                     <input
                                         required
                                         type="number"
                                         name="age"
                                         value={formData.age}
                                         onChange={handleChange}
-                                        style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', border: '1px solid #cbd5e1', backgroundColor: 'rgba(255,255,255,0.8)' }}
+                                        className="form-input"
                                         placeholder="Age"
                                     />
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-2" style={{ gap: '1rem', marginBottom: '1rem' }}>
-                                <div>
-                                    <label style={{ display: 'block', marginBottom: '0.4rem', fontWeight: 600, fontSize: '0.9rem', color: '#334155' }}>Gender</label>
+                            <div className="grid grid-cols-2">
+                                <div className="form-group">
+                                    <label className="form-label">Gender</label>
                                     <select
                                         required
                                         name="gender"
                                         value={formData.gender}
                                         onChange={handleChange}
-                                        style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', border: '1px solid #cbd5e1', backgroundColor: 'rgba(255,255,255,0.8)' }}
+                                        className="form-select"
                                     >
                                         <option value="">Select</option>
                                         <option value="Male">Male</option>
@@ -161,44 +140,45 @@ const PatientForm = () => {
                                         <option value="Other">Other</option>
                                     </select>
                                 </div>
-                                <div>
-                                    <label style={{ display: 'block', marginBottom: '0.4rem', fontWeight: 600, fontSize: '0.9rem', color: '#334155' }}>Phone</label>
+                                <div className="form-group">
+                                    <label className="form-label">Phone</label>
                                     <input
                                         required
                                         type="tel"
                                         name="contact"
                                         value={formData.contact}
                                         onChange={handleChange}
-                                        style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', border: '1px solid #cbd5e1', backgroundColor: 'rgba(255,255,255,0.8)' }}
+                                        className="form-input"
                                         placeholder="Phone"
                                     />
                                 </div>
                             </div>
 
-                            <div style={{ marginBottom: '1rem' }}>
-                                <label style={{ display: 'block', marginBottom: '0.4rem', fontWeight: 600, fontSize: '0.9rem', color: '#334155' }}>Department / Doctor</label>
+                            <div className="form-group">
+                                <label className="form-label">Department / Doctor</label>
                                 <input
                                     type="text"
                                     value={`${formData.doctor ? formData.doctor + ' - ' : ''}${formData.department || 'General Checkup'}`}
                                     disabled
-                                    style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', border: '1px solid #e2e8f0', backgroundColor: '#f1f5f9', color: '#64748b' }}
+                                    className="form-input"
+                                    style={{ backgroundColor: '#f1f5f9', color: '#64748b' }}
                                 />
                             </div>
 
-                            <div style={{ marginBottom: '1.5rem' }}>
-                                <label style={{ display: 'block', marginBottom: '0.4rem', fontWeight: 600, fontSize: '0.9rem', color: '#334155' }}>Reason for Visit</label>
+                            <div className="form-group">
+                                <label className="form-label">Reason for Visit</label>
                                 <textarea
                                     required
                                     name="symptoms"
                                     value={formData.symptoms}
                                     onChange={handleChange}
                                     rows="3"
-                                    style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', border: '1px solid #cbd5e1', backgroundColor: 'rgba(255,255,255,0.8)', fontFamily: 'inherit' }}
+                                    className="form-textarea"
                                     placeholder="Briefly describe symptoms..."
                                 ></textarea>
                             </div>
 
-                            <Button type="submit" style={{ width: '100%', padding: '0.9rem', fontSize: '1rem', fontWeight: '600' }}>
+                            <Button type="submit" className="w-full mt-4" style={{ width: '100%' }}>
                                 Confirm Booking
                             </Button>
                         </form>

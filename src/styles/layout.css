@@ -38,6 +38,20 @@
 }
 
 /* Grid Utilities */
+.hidden {
+    display: none !important;
+}
+
+@media (min-width: 768px) {
+    .md-flex {
+        display: flex !important;
+    }
+
+    .md-block {
+        display: block !important;
+    }
+}
+
 .grid {
     display: grid;
     gap: var(--spacing-md);

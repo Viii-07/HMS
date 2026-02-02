@@ -27,16 +27,9 @@ const Navbar = () => {
                 </Link>
 
                 {/* Desktop Menu */}
-                <div className="flex gap-lg" style={{ display: 'none', '@media (min-width: 768px)': { display: 'flex' } }}>
-                    {/* Note: In pure CSS, we'd handle media queries in CSS file usually, but inline style media queries used here for simplicity or need strict class usage */}
-                    {/* Since strictly NO inline styles for structure is requested but I have to bridge styled-components gap... I should rely on global classes if possible or accept inline style for prototyping speed if pure CSS class is missing */}
+                <div className="flex gap-lg hidden md-flex">
+                    {/* Navigation items can go here if needed later */}
                 </div>
-
-                {/* Using only inline styles for 'display: none' is risky with strict rules. 
-                   Better to rely on the standard .flex class and maybe a .desktop-only class.
-                   Let's assume standard CSS has .md-flex or distinct classes. 
-                   I'll rely on a clean flex implementation.
-                */}
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
                     <Link to="/" style={{ fontWeight: 500 }}>Home</Link>
@@ -48,9 +41,6 @@ const Navbar = () => {
                         </Link>
                     ) : (
                         <div className="flex gap-sm" style={{ gap: '0.5rem' }}>
-                            <Link to="/patient">
-                                <Button>Patient Portal</Button>
-                            </Link>
                             <Link to="/login" style={{ padding: '0.75rem 1rem', fontWeight: 600, color: 'var(--primary-color)' }}>Staff Login</Link>
                         </div>
                     )}
