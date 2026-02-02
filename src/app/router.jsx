@@ -1,18 +1,16 @@
 import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
 import PublicLayout from '../layouts/PublicLayout';
 import AuthLayout from '../layouts/AuthLayout';
-import ProtectedRoute from '../routes/ProtectedRoute';
+import ProtectedRoute from '../components/common/ProtectedRoute'; // Updated import
 
 // Public Pages
 import Home from '../pages/public/Home';
 import About from '../pages/public/About';
 import Feedback from '../pages/public/Feedback';
-import NotFound from '../pages/public/NotFound';
 import PatientForm from '../pages/public/PatientForm'; // Future file
 
 // Auth Pages
 import Login from '../pages/auth/Login';
-
 
 // Portals
 import AdminPortal from '../pages/portals/AdminPortal';
@@ -20,7 +18,11 @@ import DoctorPortal from '../pages/portals/DoctorPortal';
 import ReceptionistPortal from '../pages/portals/ReceptionistPortal';
 import StaffPortal from '../pages/portals/StaffPortal';
 import PharmacyPortal from '../pages/portals/PharmacyPortal';
-import PatientPortal from '../pages/portals/PatientPortal'; // Now public-ish logic, but still a portal view
+import PatientPortal from '../pages/portals/PatientPortal';
+
+// Error Pages
+import Unauthorized from '../pages/Unauthorized';
+import NotFound from '../pages/NotFound';
 
 export const router = createBrowserRouter([
     {
@@ -30,8 +32,8 @@ export const router = createBrowserRouter([
             { index: true, element: <Home /> },
             { path: 'about', element: <About /> },
             { path: 'feedback', element: <Feedback /> },
-            { path: 'patient', element: <PatientPortal /> }, // Public access
-            { path: 'patient/form', element: <PatientForm /> }, // Public access
+            { path: 'patient', element: <PatientPortal /> },
+            { path: 'patient/form', element: <PatientForm /> },
         ],
     },
     {
@@ -39,11 +41,12 @@ export const router = createBrowserRouter([
         element: <Login />,
     },
     {
-        // AuthLayout could be used for other auth-related pages if any remain, keeping for safety or future use
+        path: '/unauthorized',
+        element: <Unauthorized />,
+    },
+    {
         element: <AuthLayout />,
-        children: [
-            // Empty for now as register is gone
-        ],
+        children: [],
     },
     {
         path: '/portal',

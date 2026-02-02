@@ -18,7 +18,7 @@ const Home = () => {
                     <div className="flex justify-center gap-md" style={{ gap: '1rem' }}>
                         <Link to="/patient">
                             <Button className="btn-primary" style={{ backgroundColor: 'white', color: 'var(--primary-color)', padding: '1rem 2rem', fontSize: '1.1rem' }}>
-                                Get Started <ArrowRight size={20} style={{ marginLeft: '0.5rem' }} />
+                                Book Appointment <ArrowRight size={20} style={{ marginLeft: '0.5rem' }} />
                             </Button>
                         </Link>
                         <Link to="/about">
@@ -42,14 +42,14 @@ const Home = () => {
                     </div>
                     <div className="card" style={{ padding: '2rem', textAlign: 'center' }}>
                         <div style={{ width: '60px', height: '60px', background: 'var(--bg-secondary)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem' }}>
-                            <Calendar size={32} color="var(--success-color)" />
+                            <Calendar size={32} color="var(--primary-color)" />
                         </div>
                         <h3 style={{ marginBottom: '1rem' }}>Smart Scheduling</h3>
                         <p>Efficient appointment booking, doctor shifting, and queue management systems.</p>
                     </div>
                     <div className="card" style={{ padding: '2rem', textAlign: 'center' }}>
                         <div style={{ width: '60px', height: '60px', background: 'var(--bg-secondary)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem' }}>
-                            <Shield size={32} color="var(--accent-color)" />
+                            <Shield size={32} color="var(--primary-color)" />
                         </div>
                         <h3 style={{ marginBottom: '1rem' }}>Secure Data</h3>
                         <p>Top-tier encryption and role-based access control to keep medical data safe.</p>

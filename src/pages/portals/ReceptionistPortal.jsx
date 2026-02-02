@@ -1,82 +1,54 @@
-import React from 'react';
-import { useAuth } from '../../hooks/useAuth';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import '../../styles/receptionist-portal.css';
+import ReceptionSidebar from '../../components/receptionist/layout/ReceptionSidebar';
+import ReceptionDashboard from '../../components/receptionist/pages/ReceptionDashboard';
+import ReceptionAppointments from '../../components/receptionist/pages/ReceptionAppointments';
+import ReceptionRegistration from '../../components/receptionist/pages/ReceptionRegistration';
+import ReceptionQueue from '../../components/receptionist/pages/ReceptionQueue';
+
+import ReceptionBilling from '../../components/receptionist/pages/ReceptionBilling';
+import ReceptionProfile from '../../components/receptionist/pages/ReceptionProfile';
+import { ReceptionProvider } from '../../context/ReceptionContext';
+
+// Placeholder components for missing pages
+const PlaceholderPage = ({ title }) => (
+    <div style={{ padding: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: 'var(--reception-text-muted)', flexDirection: 'column', gap: '1rem' }}>
+        <h2>{title}</h2>
+        <p>This module is currently under development.</p>
+    </div>
+);
 
 const ReceptionistPortal = () => {
-    const { user, logout } = useAuth();
-    const navigate = useNavigate();
+    const [activeTab, setActiveTab] = useState('dashboard');
 
-    const handleLogout = () => {
-        logout();
-        navigate('/login');
+    const renderContent = () => {
+        switch (activeTab) {
+            case 'dashboard':
+                return <ReceptionDashboard setActiveTab={setActiveTab} />;
+            case 'appointments':
+                return <ReceptionAppointments />;
+            case 'registration':
+                return <ReceptionRegistration />;
+            case 'queue':
+                return <ReceptionQueue />;
+            case 'billing':
+                return <ReceptionBilling />;
+            case 'profile':
+                return <ReceptionProfile />;
+            default:
+                return <ReceptionDashboard setActiveTab={setActiveTab} />;
+        }
     };
 
     return (
-        <div className="dashboard-layout">
-            <nav className="sidebar">
-                <div className="sidebar-header">
-                    <h2 style={{ color: '#059669' }}>Reception</h2>
-                    <p>{user?.id}</p>
-                </div>
-                <div className="sidebar-nav">
-                    <ul>
-                        <li className="nav-item active receptionist">
-                            Dashboard
-                        </li>
-                        <li className="nav-item">
-                            New Registration
-                        </li>
-                        <li className="nav-item">
-                            Billing & Invoices
-                        </li>
-                    </ul>
-                </div>
-                <div className="sidebar-footer">
-                    <button onClick={handleLogout} className="logout-btn">
-                        Logout
-                    </button>
-                </div>
-            </nav>
-
-            <main className="dashboard-content">
-                <header className="dashboard-header">
-                    <div>
-                        <h1>Front Desk</h1>
-                        <p>Manage patient flow and registrations</p>
-                    </div>
-                </header>
-
-                <div className="dashboard-grid">
-                    <div className="stat-card">
-                        <h3>Check-ins</h3>
-                        <div className="stat-content">
-                            <div className="stat-value text-green">24</div>
-                            <p className="stat-label">Today</p>
-                        </div>
-                    </div>
-
-                    <div className="stat-card">
-                        <h3>Calls Queued</h3>
-                        <div className="stat-content">
-                            <div className="stat-value text-orange">5</div>
-                            <p className="stat-label">Pending</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="action-card">
-                    <h3>Quick Actions</h3>
-                    <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
-                        <button style={{ padding: '0.75rem 1.5rem', backgroundColor: '#059669', color: 'white', border: 'none', borderRadius: '6px', fontWeight: '600', cursor: 'pointer' }}>
-                            + Register Patient
-                        </button>
-                        <button style={{ padding: '0.75rem 1.5rem', backgroundColor: '#e2e8f0', color: '#475569', border: 'none', borderRadius: '6px', fontWeight: '600', cursor: 'pointer' }}>
-                            Search Records
-                        </button>
-                    </div>
-                </div>
-            </main>
-        </div>
+        <ReceptionProvider>
+            <div className="reception-portal-container">
+                <ReceptionSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+                <main className="reception-main">
+                    {renderContent()}
+                </main>
+            </div>
+        </ReceptionProvider>
     );
 };
 
