@@ -3,16 +3,25 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 
 const ProtectedRoute = ({ allowedRoles, children }) => {
-    const { user, isAuthenticated } = useAuth();
+    const { user, isAuthenticated, authReady } = useAuth();
     const location = useLocation();
+
+    // Fix 3: Harden Route Guard
+    if (!authReady) return null; // Or a loading spinner
 
     if (!isAuthenticated) {
         return <Navigate to="/login" state={{ from: location }} replace />;
     }
 
-    if (allowedRoles && !allowedRoles.includes(user.role)) {
-        // Redirect to their appropriate dashboard
-        return <Navigate to="/dashboard" replace />;
+    // Fix 4: Harden Role Guard & Normalization check
+    // We compare Uppercase to Uppercase to be safe
+    if (allowedRoles) {
+        const userRole = user?.role?.toUpperCase();
+        const hasPermission = allowedRoles.some(role => role.toUpperCase() === userRole);
+
+        if (!hasPermission) {
+            return <Navigate to="/unauthorized" replace />;
+        }
     }
 
     return children ? children : <Outlet />;
