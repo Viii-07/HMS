@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 import Button from '../../components/ui/Button';
+import hospitalVideo from '../../utils/hospital.mp4';
 
 const PatientForm = () => {
     const location = useLocation();
@@ -41,108 +43,148 @@ const PatientForm = () => {
         }, 3000);
     };
 
-    if (submitted) {
-        return (
-            <div className="container" style={{ padding: '4rem 0', textAlign: 'center' }}>
-                <div style={{ backgroundColor: '#ecfdf5', padding: '2rem', borderRadius: '12px', border: '1px solid #d1fae5', maxWidth: '600px', margin: '0 auto' }}>
-                    <h2 style={{ color: '#059669', marginBottom: '1rem' }}>Registration Successful!</h2>
-                    <p style={{ color: '#065f46' }}>Your information has been received. Please head to the reception for your queue token.</p>
-                    <p style={{ marginTop: '1rem', fontWeight: 600 }}>Redirecting to portal...</p>
-                </div>
-            </div>
-        );
-    }
-
     return (
-        <div className="container" style={{ padding: '2rem 0', maxWidth: '800px' }}>
-            <h1 style={{ marginBottom: '2rem', color: '#1e3a8a' }}>Patient Registration Form</h1>
+        <div className="booking-wrapper">
+            {/* Background Video */}
+            <video
+                src={hospitalVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="booking-video-bg"
+            />
 
-            <form onSubmit={handleSubmit} style={{ backgroundColor: 'white', padding: '2rem', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
-                <div className="grid grid-cols-2" style={{ gap: '1.5rem', marginBottom: '1.5rem' }}>
-                    <div>
-                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Full Name</label>
-                        <input
-                            required
-                            type="text"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            className="input-field"
-                            style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1' }}
-                            placeholder="John Doe"
-                        />
-                    </div>
-                    <div>
-                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Age</label>
-                        <input
-                            required
-                            type="number"
-                            name="age"
-                            value={formData.age}
-                            onChange={handleChange}
-                            style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1' }}
-                            placeholder="e.g. 30"
-                        />
-                    </div>
-                </div>
+            {/* Overlay */}
+            <div className="booking-overlay"></div>
 
-                <div className="grid grid-cols-2" style={{ gap: '1.5rem', marginBottom: '1.5rem' }}>
-                    <div>
-                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Gender</label>
-                        <select
-                            required
-                            name="gender"
-                            value={formData.gender}
-                            onChange={handleChange}
-                            style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1', backgroundColor: 'white' }}
+            {/* Content Container */}
+            <div className="booking-content">
+                {/* Form Card */}
+                {submitted ? (
+                    <div className="booking-card success">
+                        <h2 style={{ color: '#059669' }}>Success!</h2>
+                        <p style={{ color: '#065f46', fontSize: '1.1rem' }}>Your registration is confirmed.</p>
+                        <p style={{ marginTop: '1rem', fontWeight: 600, color: '#047857' }}>Redirecting...</p>
+                    </div>
+                ) : (
+                    <div className="booking-card">
+                        <button
+                            onClick={() => navigate('/patient')}
+                            style={{
+                                background: 'none',
+                                border: 'none',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.5rem',
+                                color: '#64748b',
+                                marginBottom: '1.5rem',
+                                fontSize: '0.9rem',
+                                padding: 0,
+                                fontWeight: 500
+                            }}
+                            onMouseOver={(e) => e.currentTarget.style.color = '#0284c7'}
+                            onMouseOut={(e) => e.currentTarget.style.color = '#64748b'}
                         >
-                            <option value="">Select Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Other">Other</option>
-                        </select>
+                            <ArrowLeft size={16} />
+                            Back to Portal
+                        </button>
+
+                        <div style={{ marginBottom: '2rem' }}>
+                            <h2 className="text-xl font-bold text-brand-primary">Book Consultation</h2>
+                            <p className="text-muted mt-2">Fill in your details to secure an appointment.</p>
+                        </div>
+
+                        <form onSubmit={handleSubmit}>
+                            <div className="grid grid-cols-2">
+                                <div className="form-group">
+                                    <label className="form-label">Full Name</label>
+                                    <input
+                                        required
+                                        type="text"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        className="form-input"
+                                        placeholder="John Doe"
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label className="form-label">Age</label>
+                                    <input
+                                        required
+                                        type="number"
+                                        name="age"
+                                        value={formData.age}
+                                        onChange={handleChange}
+                                        className="form-input"
+                                        placeholder="Age"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-2">
+                                <div className="form-group">
+                                    <label className="form-label">Gender</label>
+                                    <select
+                                        required
+                                        name="gender"
+                                        value={formData.gender}
+                                        onChange={handleChange}
+                                        className="form-select"
+                                    >
+                                        <option value="">Select</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <label className="form-label">Phone</label>
+                                    <input
+                                        required
+                                        type="tel"
+                                        name="contact"
+                                        value={formData.contact}
+                                        onChange={handleChange}
+                                        className="form-input"
+                                        placeholder="Phone"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="form-group">
+                                <label className="form-label">Department / Doctor</label>
+                                <input
+                                    type="text"
+                                    value={`${formData.doctor ? formData.doctor + ' - ' : ''}${formData.department || 'General Checkup'}`}
+                                    disabled
+                                    className="form-input"
+                                    style={{ backgroundColor: '#f1f5f9', color: '#64748b' }}
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label className="form-label">Reason for Visit</label>
+                                <textarea
+                                    required
+                                    name="symptoms"
+                                    value={formData.symptoms}
+                                    onChange={handleChange}
+                                    rows="3"
+                                    className="form-textarea"
+                                    placeholder="Briefly describe symptoms..."
+                                ></textarea>
+                            </div>
+
+                            <Button type="submit" className="w-full mt-4" style={{ width: '100%' }}>
+                                Confirm Booking
+                            </Button>
+                        </form>
                     </div>
-                    <div>
-                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Contact Number</label>
-                        <input
-                            required
-                            type="tel"
-                            name="contact"
-                            value={formData.contact}
-                            onChange={handleChange}
-                            style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1' }}
-                            placeholder="(123) 456-7890"
-                        />
-                    </div>
-                </div>
-
-                <div style={{ marginBottom: '1.5rem' }}>
-                    <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Selected Doctor / Department</label>
-                    <input
-                        type="text"
-                        value={`${formData.doctor ? formData.doctor + ' - ' : ''}${formData.department || 'General'}`}
-                        disabled
-                        style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #e2e8f0', backgroundColor: '#f8fafc', color: '#64748b' }}
-                    />
-                </div>
-
-                <div style={{ marginBottom: '2rem' }}>
-                    <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Symptoms / Reason for Visit</label>
-                    <textarea
-                        required
-                        name="symptoms"
-                        value={formData.symptoms}
-                        onChange={handleChange}
-                        rows="4"
-                        style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1', fontFamily: 'inherit' }}
-                        placeholder="Briefly describe your condition..."
-                    ></textarea>
-                </div>
-
-                <Button type="submit" style={{ width: '100%', padding: '1rem', fontSize: '1.1rem' }}>
-                    Submit Registration
-                </Button>
-            </form>
+                )}
+            </div>
         </div>
     );
 };
