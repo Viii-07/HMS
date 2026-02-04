@@ -131,12 +131,14 @@ const PharmacyDispense = () => {
                         </div>
                     </div>
                 ) : (
-                    <div style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: 'var(--pharmacy-text-muted)' }}>
-                        <div style={{ width: '80px', height: '80px', background: '#e0f2fe', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem', color: '#0284c7' }}>
-                            <Pill size={40} />
+                    <div style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                        <div className="stat-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', maxWidth: '400px' }}>
+                            <div style={{ width: '80px', height: '80px', background: '#e0f2fe', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem', color: '#0284c7' }}>
+                                <Pill size={40} />
+                            </div>
+                            <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Select a Prescription</h2>
+                            <p className="text-label">Choose a pending prescription from the list to begin dispensing.</p>
                         </div>
-                        <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Select a Prescription</h2>
-                        <p>Choose a pending prescription from the list to begin dispensing.</p>
                     </div>
                 )}
             </div>

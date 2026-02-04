@@ -26,8 +26,8 @@ const AdminSettings = () => {
         <div style={{ padding: '2.5rem', height: '100%', overflowY: 'auto' }}>
             <header style={{ marginBottom: '3rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
-                    <h1 style={{ fontSize: '2.25rem', fontWeight: 800, color: '#1e293b', marginBottom: '0.5rem' }}>System Configuration</h1>
-                    <p className="text-label" style={{ fontSize: '1.1rem' }}>Manage global system settings and preferences.</p>
+                    <h1 style={{ fontSize: '2.25rem', fontWeight: 800, color: '#000080', marginBottom: '0.5rem' }}>System Configuration</h1>
+                    <p className="text-label" style={{ fontSize: '1.1rem', color: '#000080' }}>Manage global system settings and preferences.</p>
                 </div>
                 <button
                     onClick={toggleLock}
@@ -51,7 +51,7 @@ const AdminSettings = () => {
                         <div style={{ padding: '0.5rem', background: '#eff6ff', borderRadius: '8px', color: '#2563eb' }}>
                             <Building size={20} />
                         </div>
-                        <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#1e293b' }}>Hospital Details</h3>
+                        <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#000080' }}>Hospital Details</h3>
                     </div>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -85,7 +85,7 @@ const AdminSettings = () => {
                         <div style={{ padding: '0.5rem', background: '#f5f3ff', borderRadius: '8px', color: '#7c3aed' }}>
                             <Settings size={20} />
                         </div>
-                        <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#1e293b' }}>System Preferences</h3>
+                        <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#000080' }}>System Preferences</h3>
                     </div>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>

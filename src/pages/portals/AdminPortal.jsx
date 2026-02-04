@@ -7,9 +7,13 @@ import AdminUsers from '../../components/admin/pages/AdminUsers';
 import AdminLogs from '../../components/admin/pages/AdminLogs';
 import AdminFinance from '../../components/admin/pages/AdminFinance';
 import AdminSettings from '../../components/admin/pages/AdminSettings';
+import AdminBg from '../../assets/Admin.png';
 
 const AdminPortal = () => {
     const [activeTab, setActiveTab] = useState('overview');
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+    const toggleSidebar = () => setIsSidebarCollapsed(!isSidebarCollapsed);
 
     const renderContent = () => {
         switch (activeTab) {
@@ -30,9 +34,21 @@ const AdminPortal = () => {
 
     return (
         <AdminProvider>
-            <div className="doctor-portal-container">
-                <AdminSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
-                <main className="doctor-main" style={{ background: '#f8fafc' }}>
+            <div className="doctor-portal-container" style={{
+                backgroundImage: `url(${AdminBg})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundAttachment: 'fixed',
+                minHeight: '100vh'
+            }}>
+                <AdminSidebar
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                    isCollapsed={isSidebarCollapsed}
+                    toggleSidebar={toggleSidebar}
+                />
+                <main className="doctor-main" style={{ background: 'transparent' }}>
                     {renderContent()}
                 </main>
             </div>

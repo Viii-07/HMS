@@ -18,9 +18,9 @@ const PharmacyProfile = () => {
 
     return (
         <div style={{ padding: '2rem', height: '100%', overflowY: 'auto' }}>
-            <header style={{ marginBottom: '2rem' }}>
+            <header style={{ marginBottom: '2rem', background: 'rgba(255, 255, 255, 0.9)', padding: '1.5rem', borderRadius: '12px', boxShadow: 'var(--pharmacy-shadow)', border: '1px solid var(--pharmacy-border)' }}>
                 <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Pharmacist Profile</h1>
-                <p className="text-label" style={{ fontSize: '1.1rem' }}>Manage your personal details and account settings</p>
+                <p className="text-label" style={{ fontSize: '1.1rem', margin: 0 }}>Manage your personal details and account settings</p>
             </header>
 
             <div style={{ maxWidth: '800px', display: 'grid', gridTemplateColumns: 'minmax(250px, 1fr) 2fr', gap: '2rem' }}>

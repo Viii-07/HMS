@@ -8,9 +8,9 @@ const PharmacyDashboard = ({ setActiveTab }) => {
 
     return (
         <div style={{ padding: '2rem', height: '100%', overflowY: 'auto' }}>
-            <header style={{ marginBottom: '2rem' }}>
-                <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Pharmacy Store</h1>
-                <p className="text-label" style={{ fontSize: '1.1rem' }}>Overview of medication inventory and dispensing operations</p>
+            <header style={{ marginBottom: '2rem', background: 'rgba(255, 255, 255, 0.9)', padding: '1.5rem', borderRadius: '12px', boxShadow: 'var(--pharmacy-shadow)', border: '1px solid var(--pharmacy-border)' }}>
+                <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem', lineHeight: 1 }}>Pharmacy Store</h1>
+                <p className="text-label" style={{ fontSize: '1.1rem', margin: 0 }}>Overview of medication inventory and dispensing operations</p>
             </header>
 
             {/* Stats Grid */}

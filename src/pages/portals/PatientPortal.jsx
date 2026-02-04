@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Clock, MapPin, Phone, ArrowRight } from 'lucide-react';
 import Button from '../../components/ui/Button';
+import HomeBg from '../../assets/Home.png';
 
 const DUMMY_DOCTORS = [
     { id: 1, name: "Dr. Sarah Smith", specialization: "Cardiologist", department: "Cardiology", availability: "Today, 9AM - 2PM" },
@@ -20,34 +21,51 @@ const PatientPortal = () => {
     };
 
     return (
-        <div style={{ paddingBottom: '4rem' }}>
+        <div style={{
+            paddingBottom: '4rem',
+            backgroundImage: `url(${HomeBg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            minHeight: '100vh',
+            backgroundAttachment: 'fixed'
+        }}>
             {/* Hospital Info Header */}
-            <section style={{ backgroundColor: '#1e3a8a', color: 'white', padding: '3rem 0' }}>
+            <section style={{ backgroundColor: 'transparent', padding: '3rem 0' }}>
                 <div className="container">
-                    <h1 style={{ color: 'white', marginBottom: '1.5rem' }}>ProHealth Hospital Services</h1>
-                    <div className="grid grid-cols-3" style={{ gap: '2rem' }}>
-                        <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                            <Clock size={24} color="#60a5fa" />
-                            <div>
-                                <h3 style={{ color: 'white', margin: '0 0 0.5rem 0', fontSize: '1.1rem' }}>Working Hours</h3>
-                                <p style={{ color: '#bfdbfe', margin: 0 }}>Open 24/7 for Emergency</p>
-                                <p style={{ color: '#bfdbfe', margin: 0 }}>OPD: 8:00 AM - 8:00 PM</p>
+                    <div style={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.85)',
+                        backdropFilter: 'blur(12px)',
+                        borderRadius: '16px',
+                        padding: '2rem',
+                        boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
+                        border: '1px solid rgba(255, 255, 255, 0.18)'
+                    }}>
+                        <h1 style={{ color: '#1e3a8a', marginBottom: '1.5rem', fontWeight: 800 }}>ProHealth Hospital Services</h1>
+                        <div className="grid grid-cols-3" style={{ gap: '2rem' }}>
+                            <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                                <Clock size={24} color="#2563eb" />
+                                <div>
+                                    <h3 style={{ color: '#1d4ed8', margin: '0 0 0.5rem 0', fontSize: '1.1rem', fontWeight: 700 }}>Working Hours</h3>
+                                    <p style={{ color: '#1e40af', margin: 0, fontWeight: 500 }}>Open 24/7 for Emergency</p>
+                                    <p style={{ color: '#1e40af', margin: 0, fontWeight: 500 }}>OPD: 8:00 AM - 8:00 PM</p>
+                                </div>
                             </div>
-                        </div>
-                        <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                            <Phone size={24} color="#60a5fa" />
-                            <div>
-                                <h3 style={{ color: 'white', margin: '0 0 0.5rem 0', fontSize: '1.1rem' }}>Emergency Contact</h3>
-                                <p style={{ color: '#bfdbfe', margin: 0 }}>+1 (800) 123-4567</p>
-                                <p style={{ color: '#bfdbfe', margin: 0 }}>ambulance@prohealth.com</p>
+                            <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                                <Phone size={24} color="#2563eb" />
+                                <div>
+                                    <h3 style={{ color: '#1d4ed8', margin: '0 0 0.5rem 0', fontSize: '1.1rem', fontWeight: 700 }}>Emergency Contact</h3>
+                                    <p style={{ color: '#1e40af', margin: 0, fontWeight: 500 }}>+1 (800) 123-4567</p>
+                                    <p style={{ color: '#1e40af', margin: 0, fontWeight: 500 }}>ambulance@prohealth.com</p>
+                                </div>
                             </div>
-                        </div>
-                        <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                            <MapPin size={24} color="#60a5fa" />
-                            <div>
-                                <h3 style={{ color: 'white', margin: '0 0 0.5rem 0', fontSize: '1.1rem' }}>Location</h3>
-                                <p style={{ color: '#bfdbfe', margin: 0 }}>123 Health Avenue,</p>
-                                <p style={{ color: '#bfdbfe', margin: 0 }}>Medical District, NY</p>
+                            <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                                <MapPin size={24} color="#2563eb" />
+                                <div>
+                                    <h3 style={{ color: '#1d4ed8', margin: '0 0 0.5rem 0', fontSize: '1.1rem', fontWeight: 700 }}>Location</h3>
+                                    <p style={{ color: '#1e40af', margin: 0, fontWeight: 500 }}>123 Health Avenue,</p>
+                                    <p style={{ color: '#1e40af', margin: 0, fontWeight: 500 }}>Medical District, NY</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -56,17 +74,18 @@ const PatientPortal = () => {
 
             {/* Doctor Cards */}
             <section className="container" style={{ marginTop: '3rem' }}>
-                <h2 style={{ marginBottom: '2rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.5rem', display: 'inline-block' }}>
+                <h2 style={{ marginBottom: '2rem', borderBottom: '2px solid rgba(255,255,255,0.3)', paddingBottom: '0.5rem', display: 'inline-block', color: '#38bdf8', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
                     Find a Specialist
                 </h2>
 
                 <div className="grid grid-cols-3" style={{ gap: '2rem' }}>
                     {DUMMY_DOCTORS.map(doctor => (
                         <div key={doctor.id} style={{
-                            backgroundColor: 'white',
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                            backdropFilter: 'blur(10px)',
                             borderRadius: '12px',
                             boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                            border: '1px solid #e2e8f0',
+                            border: '1px solid rgba(255, 255, 255, 0.5)',
                             overflow: 'hidden',
                             transition: 'transform 0.2s',
                             cursor: 'default'

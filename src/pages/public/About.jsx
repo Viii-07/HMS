@@ -1,8 +1,17 @@
 import React from 'react';
+import HomeBg from '../../assets/Home.png';
 
 const About = () => {
     return (
-        <div className="about-wrapper">
+        <div className="about-wrapper" style={{
+            backgroundImage: `url(${HomeBg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            minHeight: '100vh',
+            backgroundAttachment: 'fixed',
+            paddingBottom: '2rem'
+        }}>
             {/* Hero Section */}
             <div className="landing-hero">
                 <div className="hero-content">

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../../styles/doctor-portal.css';
+import StaffBg from '../../assets/Staff.jpg';
 import StaffSidebar from '../../components/staff/layout/StaffSidebar';
 import StaffDashboard from '../../components/staff/pages/StaffDashboard';
 import StaffTasks from '../../components/staff/pages/StaffTasks';
@@ -9,6 +10,9 @@ import { StaffProvider } from '../../context/StaffContext';
 
 const StaffPortal = () => {
     const [activeTab, setActiveTab] = useState('dashboard');
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+    const toggleSidebar = () => setIsSidebarCollapsed(!isSidebarCollapsed);
 
     const renderContent = () => {
         switch (activeTab) {
@@ -27,8 +31,18 @@ const StaffPortal = () => {
 
     return (
         <StaffProvider>
-            <div className="doctor-portal-container">
-                <StaffSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+            <div className="doctor-portal-container" style={{
+                backgroundImage: `url(${StaffBg})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat'
+            }}>
+                <StaffSidebar
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                    isCollapsed={isSidebarCollapsed}
+                    toggleSidebar={toggleSidebar}
+                />
                 <main className="doctor-main">
                     {renderContent()}
                 </main>

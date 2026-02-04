@@ -105,10 +105,10 @@ const DoctorAppointments = ({ appointments = [], setAppointments }) => {
                 {selectedAppointment ? (
                     <>
                         {/* Header */}
-                        <div className="detail-header">
+                        <div className="detail-header glass-header" style={{ marginBottom: '2rem' }}>
                             <div>
                                 <h2 style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>{selectedAppointment.patientName}</h2>
-                                <p className="text-label" style={{ fontSize: '1rem' }}>
+                                <p className="text-label" style={{ fontSize: '1rem', margin: 0 }}>
                                     Patient ID: #{1000 + selectedAppointment.id} • {selectedAppointment.age} Years • {selectedAppointment.gender}
                                 </p>
                             </div>
@@ -117,7 +117,7 @@ const DoctorAppointments = ({ appointments = [], setAppointments }) => {
 
                         {/* Consultation Workspace vs Standard View */}
                         {selectedAppointment.status === 'in-consultation' ? (
-                            <div className="consultation-workspace">
+                            <div className="consultation-workspace detail-card" style={{ padding: '2rem' }}>
                                 <div style={{ marginBottom: '1.5rem', padding: '1rem', background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                                     <Activity size={20} color="#f59e0b" />
                                     <div>
@@ -175,7 +175,7 @@ const DoctorAppointments = ({ appointments = [], setAppointments }) => {
                                     display: 'flex', gap: '1rem', padding: '1.5rem',
                                     background: 'white', borderTop: '1px solid var(--doctor-border)',
                                     position: 'sticky', bottom: '-2rem', margin: '0 -2rem -2rem -2rem',
-                                    marginTop: 'auto'
+                                    marginTop: 'auto', borderRadius: '0 0 16px 16px'
                                 }}>
                                     <button className="action-btn btn-outline" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                         <Save size={18} /> Save Draft
@@ -200,7 +200,7 @@ const DoctorAppointments = ({ appointments = [], setAppointments }) => {
                         ) : (
                             // Standard Detail View (Pending / Completed)
                             <div>
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
+                                <div className="detail-card" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem', padding: '1.5rem' }}>
                                     <div>
                                         <h3 className="section-title"><AlertCircle size={20} /> Reason</h3>
                                         <p className="text-value">{selectedAppointment.reason}</p>

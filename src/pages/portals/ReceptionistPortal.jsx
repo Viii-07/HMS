@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import bgImage from '../../assets/Reception.jpeg';
 import '../../styles/receptionist-portal.css';
 import ReceptionSidebar from '../../components/receptionist/layout/ReceptionSidebar';
 import ReceptionDashboard from '../../components/receptionist/pages/ReceptionDashboard';
@@ -18,8 +19,12 @@ const PlaceholderPage = ({ title }) => (
     </div>
 );
 
+
 const ReceptionistPortal = () => {
     const [activeTab, setActiveTab] = useState('dashboard');
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+    const toggleSidebar = () => setIsSidebarCollapsed(!isSidebarCollapsed);
 
     const renderContent = () => {
         switch (activeTab) {
@@ -42,8 +47,18 @@ const ReceptionistPortal = () => {
 
     return (
         <ReceptionProvider>
-            <div className="reception-portal-container">
-                <ReceptionSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+            <div className="reception-portal-container" style={{
+                backgroundImage: `url(${bgImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat'
+            }}>
+                <ReceptionSidebar
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                    isCollapsed={isSidebarCollapsed}
+                    toggleSidebar={toggleSidebar}
+                />
                 <main className="reception-main">
                     {renderContent()}
                 </main>

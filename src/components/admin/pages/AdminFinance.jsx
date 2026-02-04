@@ -16,8 +16,8 @@ const AdminFinance = () => {
     return (
         <div style={{ padding: '2.5rem', height: '100%', overflowY: 'auto' }}>
             <header style={{ marginBottom: '3rem' }}>
-                <h1 style={{ fontSize: '2.25rem', fontWeight: 800, color: '#1e293b', marginBottom: '0.5rem' }}>Financial Overview</h1>
-                <p className="text-label" style={{ fontSize: '1.1rem' }}>Revenue tracking and invoice management.</p>
+                <h1 style={{ fontSize: '2.25rem', fontWeight: 800, color: '#000080', marginBottom: '0.5rem' }}>Financial Overview</h1>
+                <p className="text-label" style={{ fontSize: '1.1rem', color: '#000080' }}>Revenue tracking and invoice management.</p>
             </header>
 
             {/* Financial KPIs */}
@@ -27,7 +27,7 @@ const AdminFinance = () => {
                         <span className="text-label">Today's Revenue</span>
                         <TrendingUp size={20} color="#10b981" />
                     </div>
-                    <span style={{ fontSize: '2rem', fontWeight: 800, color: '#1e293b' }}>$12,450</span>
+                    <span style={{ fontSize: '2rem', fontWeight: 800, color: '#000080' }}>$12,450</span>
                     <span className="text-label" style={{ color: '#10b981', fontSize: '0.85rem' }}>+12% vs yesterday</span>
                 </div>
                 <div className="detail-card" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
@@ -35,7 +35,7 @@ const AdminFinance = () => {
                         <span className="text-label">Monthly Revenue</span>
                         <DollarSign size={20} color="#2563eb" />
                     </div>
-                    <span style={{ fontSize: '2rem', fontWeight: 800, color: '#1e293b' }}>$420.5k</span>
+                    <span style={{ fontSize: '2rem', fontWeight: 800, color: '#000080' }}>$420.5k</span>
                     <span className="text-label" style={{ color: '#2563eb', fontSize: '0.85rem' }}>On track for target</span>
                 </div>
                 <div className="detail-card" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
@@ -43,7 +43,7 @@ const AdminFinance = () => {
                         <span className="text-label">Pending Payments</span>
                         <AlertCircle size={20} color="#d97706" />
                     </div>
-                    <span style={{ fontSize: '2rem', fontWeight: 800, color: '#1e293b' }}>$45.2k</span>
+                    <span style={{ fontSize: '2rem', fontWeight: 800, color: '#000080' }}>$45.2k</span>
                     <span className="text-label" style={{ color: '#d97706', fontSize: '0.85rem' }}>12 Invoices</span>
                 </div>
                 <div className="detail-card" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
@@ -51,7 +51,7 @@ const AdminFinance = () => {
                         <span className="text-label">Completed</span>
                         <CheckCircle size={20} color="#10b981" />
                     </div>
-                    <span style={{ fontSize: '2rem', fontWeight: 800, color: '#1e293b' }}>1,204</span>
+                    <span style={{ fontSize: '2rem', fontWeight: 800, color: '#000080' }}>1,204</span>
                     <span className="text-label" style={{ fontSize: '0.85rem' }}>Transactions this month</span>
                 </div>
             </div>
@@ -59,7 +59,7 @@ const AdminFinance = () => {
             {/* Invoice List */}
             <div className="detail-card" style={{ padding: 0, overflow: 'hidden' }}>
                 <div style={{ padding: '1.5rem 2rem', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <h3 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 700, color: '#1e293b' }}>Recent Invoices</h3>
+                    <h3 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 700, color: '#000080' }}>Recent Invoices</h3>
                     <button className="action-btn btn-outline" style={{ fontSize: '0.875rem' }}>View All Invoices</button>
                 </div>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
