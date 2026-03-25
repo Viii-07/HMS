@@ -32,9 +32,9 @@ const StaffSchedule = () => {
 
     return (
         <div style={{ padding: '2rem', height: '100%', overflowY: 'auto' }}>
-            <header style={{ marginBottom: '2rem', borderBottom: '1px solid var(--doctor-border)', paddingBottom: '1rem' }}>
+            <header className="glass-header">
                 <h1 style={{ fontSize: '2rem', color: 'var(--doctor-text-main)', marginBottom: '0.5rem' }}>Work Schedule</h1>
-                <p className="text-label" style={{ fontSize: '1.1rem' }}>Review your upcoming shifts and manage your availability</p>
+                <p className="text-label" style={{ fontSize: '1.1rem', margin: 0 }}>Review your upcoming shifts and manage your availability</p>
             </header>
 
             <div className="patient-grid">

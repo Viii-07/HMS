@@ -37,11 +37,11 @@ const StaffDashboard = ({ setActiveTab }) => {
 
     return (
         <div style={{ padding: '2rem', height: '100%', overflowY: 'auto' }}>
-            <header style={{ marginBottom: '2rem' }}>
+            <header className="glass-header">
                 <h1 style={{ fontSize: '2rem', color: 'var(--doctor-text-main)', marginBottom: '0.5rem' }}>
                     Welcome back, {staff.name.split(' ')[0]}
                 </h1>
-                <p className="text-label" style={{ fontSize: '1.1rem' }}>Here's what's happening today.</p>
+                <p className="text-label" style={{ fontSize: '1.1rem', margin: 0 }}>Here's what's happening today.</p>
             </header>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem', marginBottom: '3rem' }}>

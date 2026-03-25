@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../../styles/doctor-portal.css';
+import DoctorBg from '../../assets/Doctor.jpg';
 import DoctorSidebar from '../../components/doctor/layout/DoctorSidebar';
 import DoctorDashboard from '../../components/doctor/pages/DoctorDashboard';
 import DoctorAppointments from '../../components/doctor/pages/DoctorAppointments';
@@ -69,7 +70,10 @@ const initialAppointments = [
 
 const DoctorPortal = () => {
     const [activeTab, setActiveTab] = useState('dashboard');
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
     const [appointments, setAppointments] = useState(initialAppointments);
+
+    const toggleSidebar = () => setIsSidebarCollapsed(!isSidebarCollapsed);
 
     const renderContent = () => {
         switch (activeTab) {
@@ -89,8 +93,18 @@ const DoctorPortal = () => {
     };
 
     return (
-        <div className="doctor-portal-container">
-            <DoctorSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+        <div className="doctor-portal-container" style={{
+            backgroundImage: `url(${DoctorBg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+        }}>
+            <DoctorSidebar
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+                isCollapsed={isSidebarCollapsed}
+                toggleSidebar={toggleSidebar}
+            />
             <main className="doctor-main">
                 {renderContent()}
             </main>

@@ -25,10 +25,10 @@ const PharmacyInventory = () => {
 
     return (
         <div style={{ padding: '2rem', height: '100%', overflowY: 'auto' }}>
-            <header style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <header style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255, 255, 255, 0.9)', padding: '1.5rem', borderRadius: '12px', boxShadow: 'var(--pharmacy-shadow)', border: '1px solid var(--pharmacy-border)' }}>
                 <div>
-                    <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Inventory Management</h1>
-                    <p className="text-label" style={{ fontSize: '1.1rem' }}>Track stock levels, expiry, and reordering</p>
+                    <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem', lineHeight: 1 }}>Inventory Management</h1>
+                    <p className="text-label" style={{ fontSize: '1.1rem', margin: 0 }}>Track stock levels, expiry, and reordering</p>
                 </div>
                 <div style={{ display: 'flex', gap: '1rem' }}>
                     <button className="action-btn btn-primary">
@@ -38,7 +38,7 @@ const PharmacyInventory = () => {
             </header>
 
             {/* Filters */}
-            <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', background: 'white', padding: '1rem', borderRadius: '12px', boxShadow: 'var(--pharmacy-shadow)' }}>
+            <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', background: 'rgba(255, 255, 255, 0.9)', padding: '1rem', borderRadius: '12px', boxShadow: 'var(--pharmacy-shadow)' }}>
                 <div style={{ position: 'relative', flex: 1 }}>
                     <Search size={20} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--pharmacy-text-muted)' }} />
                     <input

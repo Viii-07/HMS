@@ -4,6 +4,7 @@ import { Activity, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import Button from '../ui/Button';
+import HmsLogo from '../../assets/hms-logo.png';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -13,16 +14,13 @@ const Navbar = () => {
         <nav style={{
             backgroundColor: 'white',
             borderBottom: '1px solid var(--border-color)',
-            position: 'sticky',
-            top: 0,
-            zIndex: 50
+            // position: 'sticky', // Removed to make it scroll with page
+            // top: 0,
+            // zIndex: 50
         }}>
             <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 'var(--header-height)' }}>
-                {/* Logo */}
-                <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <div style={{ backgroundColor: 'var(--primary-color)', padding: '0.25rem', borderRadius: '4px', display: 'flex' }}>
-                        <Activity color="white" size={24} />
-                    </div>
+                <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <img src={HmsLogo} alt="HMS Logo" style={{ height: '40px', width: 'auto' }} />
                     <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-color)' }}>HMS</span>
                 </Link>
 

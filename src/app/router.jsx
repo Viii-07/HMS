@@ -26,6 +26,10 @@ import NotFound from '../pages/NotFound';
 
 export const router = createBrowserRouter([
     {
+        path: '/patient/form',
+        element: <PatientForm />,
+    },
+    {
         path: '/',
         element: <PublicLayout />,
         children: [
@@ -33,7 +37,7 @@ export const router = createBrowserRouter([
             { path: 'about', element: <About /> },
             { path: 'feedback', element: <Feedback /> },
             { path: 'patient', element: <PatientPortal /> },
-            { path: 'patient/form', element: <PatientForm /> },
+            // { path: 'patient/form', element: <PatientForm /> }, // Moved to top level for no layout
         ],
     },
     {

@@ -23,7 +23,8 @@
 .reception-portal-container {
     display: flex;
     height: 100vh;
-    background-color: var(--reception-bg);
+    background-color: transparent;
+    /* Removed solid color for bg image */
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     color: var(--reception-text-main);
     overflow: hidden;
@@ -32,7 +33,8 @@
 /* Sidebar */
 .reception-sidebar {
     width: 260px;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Semi-transparent sidebar too */
     border-right: 1px solid var(--reception-border);
     display: flex;
     flex-direction: column;
@@ -101,7 +103,8 @@
 .list-panel {
     width: 400px;
     border-right: 1px solid var(--reception-border);
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.85);
+    /* Semi-transparent */
     display: flex;
     flex-direction: column;
     overflow-y: auto;
@@ -110,14 +113,16 @@
 
 .detail-panel {
     flex: 1;
-    background-color: var(--reception-bg);
+    background-color: transparent;
+    /* Transparent for bg image */
     padding: 2rem;
     overflow-y: auto;
 }
 
 /* Cards */
 .reception-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.9);
+    /* Semi-transparent */
     border: 1px solid var(--reception-border);
     border-radius: 12px;
     padding: 1rem;
@@ -180,7 +185,8 @@
 
 /* Detail View */
 .detail-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.9);
+    /* Semi-transparent */
     border-radius: 16px;
     padding: 2rem;
     box-shadow: var(--reception-shadow);

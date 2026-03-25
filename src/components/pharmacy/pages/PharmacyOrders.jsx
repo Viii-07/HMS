@@ -40,10 +40,10 @@ const PharmacyOrders = () => {
 
     return (
         <div style={{ padding: '2rem', height: '100%', overflowY: 'auto' }}>
-            <header style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <header style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255, 255, 255, 0.9)', padding: '1.5rem', borderRadius: '12px', boxShadow: 'var(--pharmacy-shadow)', border: '1px solid var(--pharmacy-border)' }}>
                 <div>
-                    <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Purchase Orders</h1>
-                    <p className="text-label" style={{ fontSize: '1.1rem' }}>Manage procurement and stock replenishment</p>
+                    <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem', lineHeight: 1 }}>Purchase Orders</h1>
+                    <p className="text-label" style={{ fontSize: '1.1rem', margin: 0 }}>Manage procurement and stock replenishment</p>
                 </div>
                 <button
                     className="action-btn btn-primary"

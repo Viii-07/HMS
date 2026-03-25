@@ -13,14 +13,14 @@ const KPICard = ({ label, value, subtext, icon: Icon, color, bg }) => (
         boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)'
     }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span className="text-label" style={{ fontSize: '0.95rem', fontWeight: 600, color: '#64748b' }}>{label}</span>
+            <span className="text-label" style={{ fontSize: '0.95rem', fontWeight: 600, color: '#000080' }}>{label}</span>
             <div style={{ padding: '0.6rem', borderRadius: '12px', background: bg, color: color }}>
                 <Icon size={22} />
             </div>
         </div>
         <div>
-            <span style={{ fontSize: '2.25rem', fontWeight: 800, color: '#1e293b', letterSpacing: '-0.02em', display: 'block', lineHeight: 1 }}>{value}</span>
-            {subtext && <span className="text-label" style={{ marginTop: '0.5rem', display: 'block', fontSize: '0.85rem' }}>{subtext}</span>}
+            <span style={{ fontSize: '2.25rem', fontWeight: 800, color: '#000080', letterSpacing: '-0.02em', display: 'block', lineHeight: 1 }}>{value}</span>
+            {subtext && <span className="text-label" style={{ marginTop: '0.5rem', display: 'block', fontSize: '0.85rem', color: '#000080' }}>{subtext}</span>}
         </div>
     </div>
 );
@@ -29,8 +29,8 @@ const AdminOverview = () => {
     return (
         <div style={{ padding: '2.5rem', height: '100%', overflowY: 'auto' }}>
             <header style={{ marginBottom: '3rem' }}>
-                <h1 style={{ fontSize: '2.25rem', fontWeight: 800, color: '#1e293b', marginBottom: '0.5rem' }}>System Dashboard</h1>
-                <p className="text-label" style={{ fontSize: '1.1rem' }}>Executive overview of hospital operations.</p>
+                <h1 style={{ fontSize: '2.25rem', fontWeight: 800, color: '#000080', marginBottom: '0.5rem' }}>System Dashboard</h1>
+                <p className="text-label" style={{ fontSize: '1.1rem', color: '#000080' }}>Executive overview of hospital operations.</p>
             </header>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2rem' }}>

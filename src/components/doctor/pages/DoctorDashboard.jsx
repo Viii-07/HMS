@@ -4,9 +4,9 @@ import { Users, Calendar, FileText, Activity, Clock, ArrowRight, AlertCircle } f
 const DoctorDashboard = ({ setActiveTab }) => {
     return (
         <div style={{ padding: '2rem', height: '100%', overflowY: 'auto' }}>
-            <header style={{ marginBottom: '2rem' }}>
+            <header className="glass-header">
                 <h1 style={{ fontSize: '2rem', color: 'var(--doctor-text-main)', marginBottom: '0.5rem' }}>Good Morning, Dr. Smith</h1>
-                <p className="text-label" style={{ fontSize: '1.1rem' }}>Here's what's happening in your clinic today.</p>
+                <p className="text-label" style={{ fontSize: '1.1rem', margin: 0 }}>Here's what's happening in your clinic today.</p>
             </header>
 
             {/* Stats Grid */}

@@ -12,14 +12,14 @@ const PharmacyReports = () => {
 
     return (
         <div style={{ padding: '2rem', height: '100%', overflowY: 'auto' }}>
-            <header style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <header style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255, 255, 255, 0.9)', padding: '1.5rem', borderRadius: '12px', boxShadow: 'var(--pharmacy-shadow)', border: '1px solid var(--pharmacy-border)' }}>
                 <div>
-                    <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Reports & Analytics</h1>
-                    <p className="text-label" style={{ fontSize: '1.1rem' }}>Operational insights and inventory trails</p>
+                    <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem', lineHeight: 1 }}>Reports & Analytics</h1>
+                    <p className="text-label" style={{ fontSize: '1.1rem', margin: 0 }}>Operational insights and inventory trails</p>
                 </div>
                 <div style={{ display: 'flex', gap: '1rem' }}>
                     <select
-                        style={{ padding: '0.75rem', borderRadius: '8px', border: '1px solid var(--pharmacy-border)', outline: 'none' }}
+                        style={{ padding: '0.75rem', borderRadius: '8px', border: '1px solid var(--pharmacy-border)', outline: 'none', background: 'white' }}
                         value={period}
                         onChange={(e) => setPeriod(e.target.value)}
                     >

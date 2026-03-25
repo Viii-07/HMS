@@ -14,12 +14,11 @@
     padding: var(--spacing-md);
     position: relative;
     overflow: hidden;
-    /* Base Professional Background */
-    background-color: #f8fafc;
-    /* Slate-50 */
-    background-image: linear-gradient(to bottom right, #f8fafc 0%, #f1f5f9 100%);
-    /* Fade In for the whole page */
-    animation: fadeInPage 0.8s ease-out forwards;
+    /* Clean Login Background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Background Image will be set inline in Login.jsx or assume it's set there */
 }
 
 /* Floating Blob 1 - Teal/Cyan (Top Left) */
@@ -56,32 +55,49 @@
     pointer-events: none;
 }
 
-.login-card {
+/* Glassmorphism Card for Login */
+.login-glass-card {
     position: relative;
     z-index: 10;
-    background: rgba(255, 255, 255, 0.85);
-    /* Slightly more transparency for glass feel */
+    background: rgba(255, 255, 255, 0.15);
+    /* Frosted Glass */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     padding: 3rem 2.5rem;
-    border-radius: 24px;
-    /* More rounded premium feel */
+    border-radius: 20px;
+    /* Rounded corners */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* Subtle white border */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    /* Subtle shadow */
+    text-align: center;
+    color: white;
+}
 
-    /* Base Shadow */
-    box-shadow:
-        0 20px 25px -5px rgba(0, 0, 0, 0.05),
-        0 8px 10px -6px rgba(0, 0, 0, 0.01);
+z-index: 10;
+background: rgba(255, 255, 255, 0.85);
+/* Slightly more transparency for glass feel */
+width: 100%;
+max-width: 400px;
+padding: 3rem 2.5rem;
+border-radius: 24px;
+/* More rounded premium feel */
 
-    /* Glassmorphism */
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    /* Subtle smooth border */
+/* Base Shadow */
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05),
+0 8px 10px -6px rgba(0, 0, 0, 0.01);
 
-    /* Card Animations */
-    animation:
-        cardFloat 6s ease-in-out infinite,
-        gentlePulseShadow 8s ease-in-out infinite;
+/* Glassmorphism */
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+border: 1px solid rgba(255, 255, 255, 0.5);
+/* Subtle smooth border */
+
+/* Card Animations */
+animation: cardFloat 6s ease-in-out infinite,
+gentlePulseShadow 8s ease-in-out infinite;
 }
 
 /* --- Animations --- */
@@ -190,41 +206,37 @@
     gap: 0.375rem;
 }
 
-.form-label {
-    font-size: 0.825rem;
-    font-weight: 500;
-    color: var(--color-text-muted);
-}
-
+/* Clean Inputs for Glass Card */
 .form-input,
 .form-select {
     width: 100%;
     padding: 0.75rem 0.875rem;
-    /* Compact comfortable padding */
-    border-radius: 6px;
-    border: 1px solid var(--color-border);
-    background-color: white;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Slightly opaque for readability */
     font-size: 0.9375rem;
-    color: var(--color-text-main);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    color: #1e293b;
+    /* Dark text for typing */
+    transition: all 0.2s ease;
 }
 
 .form-input:focus,
 .form-select:focus {
     outline: none;
-    border-color: var(--color-brand-primary);
-    /* Very subtle focus ring */
-    box-shadow: 0 0 0 2px var(--color-brand-subtle);
+    border-color: white;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+    background-color: white;
 }
 
-.form-select {
-    cursor: pointer;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3csvg%3e");
-    background-position: right 0.75rem center;
-    background-repeat: no-repeat;
-    background-size: 1rem 1rem;
-    padding-right: 2rem;
-    appearance: none;
+.form-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.95);
+    /* White label text */
+    margin-bottom: 0.5rem;
+    display: block;
+    text-align: left;
 }
 
 /* Button - Flat and Clean */
@@ -264,7 +276,7 @@
 
 .security-notice {
     font-size: 0.75rem;
-    color: var(--color-text-light);
+    color: #000080;
     /* Lighter text for almost invisible feel */
     display: flex;
     align-items: center;
@@ -274,7 +286,7 @@
 .btn-ghost {
     background: transparent;
     border: none;
-    color: var(--color-text-muted);
+    color: #000080;
     font-size: 0.8125rem;
     padding: 0.5rem;
     cursor: pointer;
@@ -316,7 +328,7 @@
 /* --- Hero Section --- */
 .landing-hero {
     position: relative;
-    background: linear-gradient(180deg, #ffffff 0%, var(--bg-page) 100%);
+    background: transparent;
     padding: 6rem var(--spacing-md) 8rem;
     /* Extra padding at bottom for overlap */
     text-align: center;
@@ -325,7 +337,7 @@
 
 /* Subtle background accent */
 .landing-hero::before {
-    content: '';
+    display: none;
     position: absolute;
     top: -50%;
     left: 50%;
@@ -361,24 +373,28 @@
 .hero-title {
     font-size: 3.5rem;
     font-weight: 800;
-    color: var(--color-text-main);
+    color: #38bdf8;
     line-height: 1.1;
     letter-spacing: -0.02em;
     margin-bottom: var(--spacing-lg);
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
 }
 
 .hero-title .highlight {
-    background: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-active));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: #38bdf8;
+    /* Bright Sky Blue */
+    text-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
 }
 
 .hero-subtitle {
     font-size: 1.25rem;
-    color: var(--color-text-muted);
+    color: #f1f5f9;
+    /* Slate-100 */
     max-width: 650px;
     margin: 0 auto;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     line-height: 1.6;
 }
 
@@ -393,7 +409,8 @@
 }
 
 .stats-strip {
-    background: white;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
     box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
     border-radius: 16px;
     padding: var(--spacing-xl);
@@ -451,9 +468,10 @@
 .section-title {
     font-size: 2.25rem;
     font-weight: 700;
-    color: var(--color-text-main);
+    color: #38bdf8;
     margin-bottom: var(--spacing-sm);
     letter-spacing: -0.02em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .modern-grid {
@@ -464,7 +482,8 @@
 }
 
 .premium-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
     border-radius: 16px;
     padding: 2.5rem 2rem;
     border: 1px solid var(--color-border);

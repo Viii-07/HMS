@@ -91,7 +91,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-active));
+    background: transparent;
     color: var(--color-text-inverse);
     text-align: center;
     padding: var(--spacing-2xl) var(--spacing-md);

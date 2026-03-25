@@ -16,12 +16,19 @@
   --doctor-border: #e2e8f0;
   --doctor-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --doctor-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  /* Glassmorphism Variables */
+  --doctor-glass-bg: rgba(255, 255, 255, 0.75);
+  --doctor-glass-border: 1px solid rgba(255, 255, 255, 0.5);
+  --doctor-glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --doctor-blur: blur(12px);
 }
+
 
 .doctor-portal-container {
   display: flex;
   height: 100vh;
-  background-color: var(--doctor-bg);
+  background-color: transparent;
+  /* Transparent for bg image */
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   color: var(--doctor-text-main);
   overflow: hidden;
@@ -30,8 +37,10 @@
 /* Sidebar */
 .doctor-sidebar {
   width: 260px;
-  background-color: #ffffff;
-  border-right: 1px solid var(--doctor-border);
+  background-color: var(--doctor-glass-bg);
+  backdrop-filter: var(--doctor-blur);
+  -webkit-backdrop-filter: var(--doctor-blur);
+  border-right: var(--doctor-glass-border);
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
@@ -99,8 +108,10 @@
 .list-panel {
   width: 400px;
   /* Fixed width for list */
-  border-right: 1px solid var(--doctor-border);
-  background-color: white;
+  border-right: var(--doctor-glass-border);
+  background-color: var(--doctor-glass-bg);
+  backdrop-filter: var(--doctor-blur);
+  -webkit-backdrop-filter: var(--doctor-blur);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -109,15 +120,18 @@
 
 .detail-panel {
   flex: 1;
-  background-color: var(--doctor-bg);
+  background-color: transparent;
+  /* Transparent for bg image */
   padding: 2rem;
   overflow-y: auto;
 }
 
 /* Cards */
 .doctor-card {
-  background: white;
-  border: 1px solid var(--doctor-border);
+  background: var(--doctor-glass-bg);
+  backdrop-filter: var(--doctor-blur);
+  -webkit-backdrop-filter: var(--doctor-blur);
+  border: var(--doctor-glass-border);
   border-radius: 12px;
   padding: 1rem;
   margin: 0.75rem;
@@ -187,10 +201,13 @@
 }
 
 .detail-card {
-  background: white;
+  background: var(--doctor-glass-bg);
+  backdrop-filter: var(--doctor-blur);
+  -webkit-backdrop-filter: var(--doctor-blur);
+  border: var(--doctor-glass-border);
   border-radius: 16px;
   padding: 2rem;
-  box-shadow: var(--doctor-shadow);
+  box-shadow: var(--doctor-glass-shadow);
 }
 
 .section-title {
@@ -214,8 +231,10 @@
 /* Search Bar */
 .search-bar-container {
   padding: 1.5rem;
-  background: white;
-  border-bottom: 1px solid var(--doctor-border);
+  background: var(--doctor-glass-bg);
+  backdrop-filter: var(--doctor-blur);
+  -webkit-backdrop-filter: var(--doctor-blur);
+  border-bottom: var(--doctor-glass-border);
 }
 
 .search-input {
@@ -271,4 +290,16 @@
 .btn-outline:hover {
   border-color: var(--doctor-primary);
   color: var(--doctor-primary);
+}
+
+/* Glass Header Utility */
+.glass-header {
+  background: var(--doctor-glass-bg) !important;
+  backdrop-filter: var(--doctor-blur);
+  -webkit-backdrop-filter: var(--doctor-blur);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--doctor-glass-shadow);
+  border: var(--doctor-glass-border);
+  margin-bottom: 2rem;
 }

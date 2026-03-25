@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Pill, Package, ClipboardList, FileText, User, LogOut } from 'lucide-react';
+import { LayoutDashboard, Pill, Package, ClipboardList, FileText, User, LogOut, Menu, ChevronLeft } from 'lucide-react';
+import MedicineBg from '../../assets/Medicine.png';
 import { PharmacyProvider } from '../../context/PharmacyContext';
 
 // Pages
@@ -20,6 +21,9 @@ const PharmacyPortal = () => {
     const { user, logout } = useAuth();
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('dashboard');
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+    const toggleSidebar = () => setIsSidebarCollapsed(!isSidebarCollapsed);
 
     const handleLogout = () => {
         logout();
@@ -51,26 +55,38 @@ const PharmacyPortal = () => {
         <div
             className={`pharmacy-nav-item ${activeTab === id ? 'active' : ''}`}
             onClick={() => setActiveTab(id)}
+            style={{ justifyContent: isSidebarCollapsed ? 'center' : 'flex-start' }}
+            title={isSidebarCollapsed ? label : ''}
         >
             <Icon size={20} />
-            <span>{label}</span>
+            {!isSidebarCollapsed && <span>{label}</span>}
         </div>
     );
 
     return (
         <PharmacyProvider>
-            <div className="pharmacy-portal-container">
-                <nav className="pharmacy-sidebar">
-                    <div className="pharmacy-sidebar-header">
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                            <div style={{ width: '40px', height: '40px', background: 'var(--pharmacy-primary)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
-                                <Pill size={24} />
+            <div className="pharmacy-portal-container" style={{
+                backgroundImage: `url(${MedicineBg})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat'
+            }}>
+                <nav className={`pharmacy-sidebar ${isSidebarCollapsed ? 'collapsed' : ''}`} style={{ width: isSidebarCollapsed ? '80px' : '260px', transition: 'width 0.3s ease' }}>
+                    <div className="pharmacy-sidebar-header" style={{ display: 'flex', alignItems: 'center', justifyContent: isSidebarCollapsed ? 'center' : 'space-between' }}>
+                        {!isSidebarCollapsed && (
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                                <div style={{ width: '40px', height: '40px', background: 'var(--pharmacy-primary)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
+                                    <Pill size={24} />
+                                </div>
+                                <div>
+                                    <h2 style={{ fontSize: '1.1rem', fontWeight: 700, margin: 0, lineHeight: 1 }}>MediCare</h2>
+                                    <span style={{ fontSize: '0.8rem', color: 'var(--pharmacy-text-muted)' }}>Pharmacy</span>
+                                </div>
                             </div>
-                            <div>
-                                <h2 style={{ fontSize: '1.1rem', fontWeight: 700, margin: 0, lineHeight: 1 }}>MediCare</h2>
-                                <span style={{ fontSize: '0.8rem', color: 'var(--pharmacy-text-muted)' }}>Pharmacy</span>
-                            </div>
-                        </div>
+                        )}
+                        <button onClick={toggleSidebar} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--pharmacy-text-muted)' }}>
+                            {isSidebarCollapsed ? <Menu size={24} /> : <ChevronLeft size={24} />}
+                        </button>
                     </div>
 
                     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
@@ -83,9 +99,9 @@ const PharmacyPortal = () => {
 
                     <div style={{ marginTop: 'auto', borderTop: '1px solid var(--pharmacy-border)', paddingTop: '1rem' }}>
                         <NavItem id="profile" icon={User} label="Profile" />
-                        <div className="pharmacy-nav-item" onClick={handleLogout} style={{ color: 'var(--pharmacy-danger)' }}>
+                        <div className="pharmacy-nav-item" onClick={handleLogout} style={{ color: 'var(--pharmacy-danger)', justifyContent: isSidebarCollapsed ? 'center' : 'flex-start' }} title="Logout">
                             <LogOut size={20} />
-                            <span>Logout</span>
+                            {!isSidebarCollapsed && <span>Logout</span>}
                         </div>
                     </div>
                 </nav>

@@ -4,6 +4,8 @@ import { useAuth } from '../../hooks/useAuth';
 import { Lock, AlertCircle, LogOut } from 'lucide-react';
 import Button from '../../components/common/Button';
 
+import LoginBg from '../../assets/LoginBg.png';
+
 const Login = () => {
     const navigate = useNavigate();
     const { login } = useAuth();
@@ -75,8 +77,8 @@ const Login = () => {
     };
 
     return (
-        <div className="login-wrapper">
-            <div className="login-card">
+        <div className="login-wrapper" style={{ backgroundImage: `url(${LoginBg})` }}>
+            <div className="login-glass-card">
                 {/* Header Section */}
                 <div className="login-header">
                     <h1 className="login-brand">ProHealth HMS</h1>

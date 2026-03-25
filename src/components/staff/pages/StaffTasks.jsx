@@ -30,17 +30,14 @@ const StaffTasks = () => {
 
     return (
         <div style={{ padding: '2rem', height: '100%', overflowY: 'auto' }}>
-            <header style={{
-                marginBottom: '2rem',
+            <header className="glass-header" style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'flex-end',
-                paddingBottom: '1rem',
-                borderBottom: '1px solid var(--doctor-border)'
             }}>
                 <div>
                     <h1 style={{ fontSize: '2rem', color: 'var(--doctor-text-main)', marginBottom: '0.5rem' }}>My Tasks</h1>
-                    <p className="text-label" style={{ fontSize: '1.1rem' }}>Manage your assigned duties</p>
+                    <p className="text-label" style={{ fontSize: '1.1rem', margin: 0 }}>Manage your assigned duties</p>
                 </div>
 
                 <div style={{ display: 'flex', gap: '0.5rem', background: '#f1f5f9', padding: '0.25rem', borderRadius: '8px' }}>
